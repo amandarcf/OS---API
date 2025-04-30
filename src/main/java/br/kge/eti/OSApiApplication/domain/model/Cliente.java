@@ -8,6 +8,7 @@ package br.kge.eti.OSApiApplication.domain.model;
  *
  * @author sesideva
  */
+
 public class Cliente {
     
     private long id;
