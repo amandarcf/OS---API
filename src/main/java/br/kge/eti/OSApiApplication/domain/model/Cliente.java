@@ -4,20 +4,38 @@
  */
 package br.kge.eti.OSApiApplication.domain.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 /**
  *
  * @author sesideva
  */
-
+@Entity
 public class Cliente {
-    
-    private long id;
-    private String nome;
-    private String email;
-    private String fone;
 
-    public Cliente() {
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @NotBlank
+    @Size(max = 60)
+    private String nome;
+
+    @NotBlank
+    @Email
+    @Size(max = 255)
+    private String email;
+
+    @NotBlank
+    @Size(max = 20)
+    @Column(name = "telefone")
+    private String fone;
+}
+
 
     public Cliente(long id, String nome, String email, String fone) {
         this.id = id;
@@ -79,6 +97,5 @@ public class Cliente {
         final Cliente other = (Cliente) obj;
         return this.id == other.id;
     }
-    
-    
+
 }
